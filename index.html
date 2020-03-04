@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Treasure Generation Tables</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="treasure-type-selector.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <treasure-type-selector @tt-updated="onTreasureTypeChanged" tt-id="1" />
+        </div>
+
+        <script type="text/javascript">
+            var app = new Vue({
+                el: "#app",
+                data: {},
+                methods: {
+                    onTreasureTypeChanged: function (tt) {
+                        console.log("selection changed: ", tt);
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
