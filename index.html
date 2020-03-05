@@ -1,22 +1,75 @@
 <html>
     <head>
         <title>Treasure Generation Tables</title>
+        <script src="dice-roller.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="treasure-type-selector.js"></script>
     </head>
 
     <body>
         <div id="app">
-            <treasure-type-selector @tt-updated="onTreasureTypeChanged" tt-id="1" />
+            <treasure-type-selector @tt-updated="onTreasureTypeChanged" tt-id="1"></treasure-type-selector>
+            <pre>
+{{ output }}
+            </pre>
         </div>
 
         <script type="text/javascript">
             var app = new Vue({
                 el: "#app",
-                data: {},
+                data: function() {
+                    return {
+                        output: "Blah.",
+                        treasureTable: {
+                            A: {
+                                copper: {
+                                    roll: 25,
+                                    die: "1d3",
+                                    multiplier: 1000
+                                },
+                                silver: {
+                                    roll: 30,
+                                    die: "1d10",
+                                    multiplier: 200
+                                },
+                                gold: {
+                                    roll: 40,
+                                    die: "1d6",
+                                    multiplier: 1000
+                                },
+                                platinum: {
+                                    roll: 35,
+                                    die: "3d6",
+                                    multiplier: 100
+                                },
+                                gems: {
+                                    roll: 60,
+                                    die: "1d4",
+                                    multiplier: 10
+                                },
+                                art: {
+                                    roll: 50,
+                                    die: "2d6",
+                                    multiplier: 1
+                                },
+                                magic: {
+                                    roll: 100,
+                                    die: "3",
+                                    multiplier: 1
+                                }
+                            }
+                        }
+                    };
+                },
                 methods: {
                     onTreasureTypeChanged: function (tt) {
                         console.log("selection changed: ", tt);
+                        this.output = JSON.stringify(this.treasureTable[tt.treasureType], undefined, 4);
+                        console.log("rolling: ", dr.roll("3"));
+                        console.log("rolling: ", dr.roll("3d6"));
+                        console.log("rolling: ", dr.roll("3.5"));
+                        console.log("rolling: ", dr.roll("m"));
+                        console.log("rolling: ", dr.roll("3dq"));
                     }
                 }
             })
