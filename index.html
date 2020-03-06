@@ -65,11 +65,11 @@
                     onTreasureTypeChanged: function (tt) {
                         console.log("selection changed: ", tt);
                         this.output = JSON.stringify(this.treasureTable[tt.treasureType], undefined, 4);
-                        console.log("rolling: ", dr.roll("3"));
+                        console.log("rolling: ", dr.roll("1d100"));
                         console.log("rolling: ", dr.roll("3d6"));
-                        console.log("rolling: ", dr.roll("3.5"));
-                        console.log("rolling: ", dr.roll("m"));
-                        console.log("rolling: ", dr.roll("3dq"));
+                        console.log("rolling: ", dr.roll("4d4"));
+                        console.log("rolling: ", dr.roll("2d12"));
+                        console.log("rolling: ", dr.roll("3d20"));
                     }
                 }
             })

@@ -2,7 +2,21 @@ class DiceRoller {
     constructor() {}
 
     roll(diceStr) {
-        return this.validateDiceStr(diceStr);
+        let config = this.validateDiceStr(diceStr);
+        if (!config.valid) return 0;
+        return this.rollDice(config);
+    }
+
+    rollDice(config) {
+        if (config.size == 0) return config.num;
+        
+        let total = 0;
+
+        for (let x = 0; x < config.num; x++) {
+            total += Math.floor((Math.random() * config.size) + 1);
+        }
+
+        return total;
     }
 
     validateDiceStr(diceStr) {
